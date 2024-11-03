@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Bear Hunter Ninja</title>
+</head>
+
+<body>
+<p id="display">
+
+<script style="text/javascript">
+ 
+
+// Present a text field to gather user input.
+let username = prompt('Welcome to Bear Hunter Ninja. Please enter your name to get started:'); 
+
+// Store the user's input in a variable.
+let player = `${username}`;
+
+// Put together messages for the players that combine text and the values of the variables from the user input (concatenation).
+
+alert('Hi ' + player + ' Let\'s Play!!');
+
+// Output the concatenated strings using two (2) different output methods.
+let userchoice = prompt('Who are you: Bear, Ninja, or Hunter?');
+const computerchoice = 'Bear';
+
+console.log(`${player}, You picked ${userchoice}. The computer picked ${computerchoice}!`);
+
+document.getElementById('display').innerHTML = `${player}, You picked ${userchoice}! The computer picked  ${computerchoice} !`;
+
+
+</script>
+</p>
+
+</body>
+</html>
