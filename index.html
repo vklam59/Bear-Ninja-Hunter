@@ -10,9 +10,9 @@
 <body>
 <p id="display">
 
-<script style="text/javascript">
- 
+<script type="text/javascript">
 
+ 
 // Present a text field to gather user input.
 let username = prompt('Welcome to Bear Hunter Ninja. Please enter your name to get started:'); 
 
@@ -25,15 +25,63 @@ alert('Hi ' + player + ' Let\'s Play!!');
 
 // Output the concatenated strings using two (2) different output methods.
 let userchoice = prompt('Who are you: Bear, Ninja, or Hunter?');
-const computerchoice = 'Bear';
+let computerchoice = 'Bear';
 
-console.log(`${player}, You picked ${userchoice}. The computer picked ${computerchoice}!`);
 
-document.getElementById('display').innerHTML = `${player}, You picked ${userchoice}! The computer picked  ${computerchoice} !`;
+// 1. Compare user's choice from the prompt to the value we're using for the computer's choice.
+// Remember that for this iteration of the game the computer's choice is still hard coded to Bear.
+// Create the logic to handle all nine (9) combinations of choices, even though the computer choice is hard coded.
+// Since there are three (3) possible outcomes from nine (9) possible conditions, we partition the values.  (HINT: Hover over the word partition for a quick summary definition.)
+// Here is how we partition our game values:
+//       Conditions 1, 2, and 3 are partitioned to a "Tie"
+//       Conditions 4, 5, and 6 are partitioned to User win.
+//       Conditions 7, 8, and 9 are partitioned to a Computer win.
+// 2. Determine game winner based on this set of game rules.  Use ONLY this game logic and no other.
+//      Bear beats Ninja, Ninja beats Hunter, and Hunter beats Bear.  
+// 3. Put together messages for the player that combine text and the values of the variables from the user input (concatenation).
+// 4. Use the switch to determine the win / loss conditions.
+// 5. Use an if..else tree to assign the correct message based on the win / loss conditions.
+// 6. Requirements 4 & 5 are to support code maintainability.  See lecture recording for details.
+// 7. Output the concatenated strings using two (2) different output methods: HTML and console.
+// 8. As long as the HTML output is on three lines as shown, you are highly encouraged to cut loose with your CSS styling!
+// 9. Fix all issues with last week's submission in this iteration.
 
+let result;
+switch(computerchoice) {
+        case 'Bear':
+            result = (userchoice === 'Bear') ? 'Tie' :
+                     (userchoice === 'Hunter') ? 'User wins' :
+                     'Computer wins';
+            break;
+        case 'Hunter':
+            result = (userchoice === 'Bear') ? 'Computer wins' :
+                     (userchoice === 'Hunter') ? 'Tie' :
+                     'User wins';
+            break;
+        case 'Ninja':
+            result = (userchoice === 'Bear') ? 'User wins' :
+                     (userchoice === 'Hunter') ? 'Computer wins' :
+                     'Tie';
+            break;
+        default:
+            result = 'Invalid choice';
+}
+
+if (result === 'Tie') {
+    result = 'It is a tie!';
+} else if (result === 'User wins') {
+    result = 'You win!!';
+} else {
+    result = 'You lose...';
+}
+
+
+console.log(`${player}, You picked ${userchoice}. <br> The computer picked ${computerchoice}! <br> Result: ${result}`);
+
+document.getElementById("display").innerHTML = `${player}, You picked ${userchoice}. <br> The computer picked ${computerchoice}! <br> Result: ${result}`;
 
 </script>
 </p>
-
 </body>
+
 </html>
