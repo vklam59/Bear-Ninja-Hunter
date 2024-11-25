@@ -3,37 +3,100 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <title>Bear Hunter Ninja</title>
 </head>
 
 <body>
 <p id="display">
+<script type="text/javascript">
 
-<script style="text/javascript">
- 
+// Present a text field to gather user input. Store the user's input in a variable.
+let player = prompt('Welcome to Bear Hunter Ninja. Please enter your name to get started:'); 
 
-// Present a text field to gather user input.
-let username = prompt('Welcome to Bear Hunter Ninja. Please enter your name to get started:'); 
+//Computer randomizes a choice within the array
+const myArray = ['Bear','Hunter','Ninja'];
+let computerchoice = myArray[Math.floor(Math.random() * myArray.length)];
 
-// Store the user's input in a variable.
-let player = `${username}`;
+//Conditions to continue the game or error message appears when click on Cancel
+if (player === null || player.length === 0) {
+    console.log('Please Press F5 to Play Again');
+    document.getElementById("display").innerHTML = 'Please Press F5 to Play Again';
+} else {
+    alert('Hi ' + player + ' Let\'s Play!!');// Put together messages for the players that combine text and the values of the variables from the user input (concatenation).    
 
-// Put together messages for the players that combine text and the values of the variables from the user input (concatenation).
+    do {
+    // Determine game winner based on this set of game rules.
+    // Bear beats Ninja, Ninja beats Hunter, and Hunter beats Bear. 
+    // Ask Player to pick an option
+    let userchoice = prompt('Who are you: Bear, Ninja, or Hunter?');
+    let result;
+    if(computerchoice == 'Bear') {
+        switch(userchoice.toLowerCase()) {
+        case 'bear':
+            result = 'Tie';
+            break;
+        case 'hunter':
+            result = 'User wins';
+            break;
+         case 'ninja':
+            result = result = 'Computer wins';
+            break;   
+        }      
+    } else if(computerchoice == 'Ninja') {
+        switch(userchoice.toLowerCase()) {
+        case 'bear':
+            result = 'User wins';
+            break;
+        case 'hunter':
+            result = 'Computer wins';
+            break;
+        case 'ninja':
+            result = result = 'Tie';
+            break;   
+        }    
+    } else if (computerchoice == 'Hunter') {
+        switch(userchoice.toLowerCase()) {
+        case 'bear':
+            result = 'Computer wins';
+            break;
+        case 'hunter':
+            result = 'Tie';
+            break;
+        case 'ninja':
+            result = result = 'User wins';
+            break;   
+        }   
+    } else { 
+        result = 'Invalid choice';
+    }
 
-alert('Hi ' + player + ' Let\'s Play!!');
-
-// Output the concatenated strings using two (2) different output methods.
-let userchoice = prompt('Who are you: Bear, Ninja, or Hunter?');
-const computerchoice = 'Bear';
-
-console.log(`${player}, You picked ${userchoice}. The computer picked ${computerchoice}!`);
-
-document.getElementById('display').innerHTML = `${player}, You picked ${userchoice}! The computer picked  ${computerchoice} !`;
+    if (result == 'Tie') {
+        result = 'It is a tie!';
+    } else if (result == 'User wins') {
+        result = 'You win!!';
+    } else {
+        result = 'You lose...';
+    };
 
 
-</script>
-</p>
+// Count down 1, 2, 3 before displaying the result
+alert ('1');
+alert ('2');
+alert ('3');
+alert(`${player}, You picked ${userchoice}. \nThe computer picked ${computerchoice}! \nResult: ${result}`);
 
-</body>
+// Console displays result message
+    console.log(`${player}, You picked ${userchoice}. \nThe computer picked ${computerchoice}! \nResult: ${result}`);
+    document.getElementById("display").innerHTML = `${player}, You picked ${userchoice}. \n The computer picked ${computerchoice}! \n Result: ${result}`;
+
+//Ask if Player wants to resume the game 
+let cont = prompt(`${player}, would you like to play again Yes or No?`)
+}  while (cont.toLowerCase() === 'yes')
+    
+};
+
+    </script>
+    </p>
+    </body>
+
 </html>
